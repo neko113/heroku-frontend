@@ -4,3 +4,8 @@
     <h2 class="text-center">NOT FOUND</h2>
   </div>
 </template>
+<script>
+export default {
+  name: "NotFound",
+};
+</script>

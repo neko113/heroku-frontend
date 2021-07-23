@@ -4,18 +4,33 @@ const routes = [
   {
     path: "/",
     name: "Home",
-    component: () => import("@/views/Home.vue"),
+    component: () => import("../views/Home.vue"),
   },
   {
     path: "/about",
     name: "About",
-    component: () => import("@/views/About.vue"),
+    component: () => import("../views/About.vue"),
+  },
+  {
+    path: "/postList",
+    name: "PostList",
+    component: () => import("../views/PostList.vue"),
+  },
+  {
+    path: "/postForm",
+    name: "PostForm",
+    component: () => import("../views/PostForm.vue"),
+  },
+  {
+    path: "/postDetail",
+    name: "PostDetail",
+    component: () => import("../views/PostDetail.vue"),
   },
   {
     // 404page
     path: "/:pathMatch(.*)*",
     name: "NotFound",
-    component: () => import("@/components/error/NotFound.vue"),
+    component: () => import("../views/NotFound.vue"),
   },
 ];
 

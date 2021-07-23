@@ -10,7 +10,7 @@
         <input type="number" id="password1" v-model="age" />
       </div>
       <div>
-        <button type="submit">submit</button>
+        <button type="submit"><i class="fas fa-check-circle"></i></button>
       </div>
     </form>
     <table>
@@ -32,8 +32,9 @@
 </template>
 <script>
 import { onMounted, ref } from "vue";
-import { get_api, post_api } from "@/service/test";
+import { get_api, post_api } from "../service/test";
 export default {
+  name: "About",
   setup() {
     const userList = ref([]);
     const nick = ref("");
