@@ -1,13 +1,17 @@
 import axios from "@/utils/axios";
 
-export function getPostList() {
-  return axios.get("/api/post");
+export function $getPostList() {
+  return axios.get(`/api/post`);
 }
 
-export function getPostDetail(id) {
+export function $getPostDetail(id) {
   return axios.get(`/api/post/${id}`);
 }
 
-export function createPost(params) {
-  return axios.post("/api/post", params);
+export function $createPost(params) {
+  return axios.post(`/api/post`, params);
+}
+
+export function $deletePost(id) {
+  return axios.delete(`/api/post/${id}`);
 }

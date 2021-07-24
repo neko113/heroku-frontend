@@ -32,7 +32,7 @@
 </template>
 <script>
 import { onMounted, ref } from "vue";
-import { get_api, post_api } from "../service/test";
+import { $get_api, $post_api } from "../service/test";
 export default {
   name: "About",
   setup() {
@@ -40,11 +40,11 @@ export default {
     const nick = ref("");
     const age = ref(0);
     const load = async () => {
-      const response = await get_api();
+      const response = await $get_api();
       userList.value = response.data.userList;
     };
     const submit = async () => {
-      await post_api({ nick: nick.value, age: age.value });
+      await $post_api({ nick: nick.value, age: age.value });
     };
     onMounted(() => load());
     return {

@@ -22,7 +22,7 @@ const routes = [
     component: () => import("../views/PostForm.vue"),
   },
   {
-    path: "/postDetail",
+    path: "/postDetail/:id",
     name: "PostDetail",
     component: () => import("../views/PostDetail.vue"),
   },
