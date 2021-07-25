@@ -45,6 +45,7 @@ export default {
         title: "제출하시겠습니까?",
         icon: "question",
         showCancelButton: true,
+        confirmButtonColor: "blue",
         cancelButtonColor: "red",
       }).then(async (result) => {
         if (result.isConfirmed) {

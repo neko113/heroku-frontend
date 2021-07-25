@@ -5,22 +5,22 @@
       <table class="table table-hover align-middle text-center">
         <thead>
           <tr>
-            <th width="10%">순서</th>
-            <th width="50%">제목</th>
-            <th width="30%">작성일</th>
+            <th width="20%">순서</th>
+            <th width="35%">제목</th>
+            <th width="35%">작성일</th>
             <th width="5%"></th>
             <th width="5%"></th>
           </tr>
         </thead>
         <tbody>
           <tr :key="i" v-for="(post, i) in postList">
-            <td>{{ post.id % 10 }}</td>
+            <td>{{ parseInt(post.id / 10) }}</td>
             <td>
               <router-link :to="{ name: 'PostDetail', params: { id: post.id } }">{{ post.title }}</router-link>
             </td>
             <td @click="test">{{ formattedDate(post.createdAt) }}</td>
             <td>
-              <router-link :to="{ name: 'PostForm' }"><i class="fas fa-pen" @click="load"></i></router-link>
+              <router-link :to="{ name: 'PostDetail', params: { id: post.id } }"><i class="fas fa-pen" @click="load"></i></router-link>
             </td>
             <td><i class="fas fa-trash" type="button" @click="deletePost(post.id)"></i></td>
           </tr>
@@ -31,8 +31,10 @@
 </template>
 <script>
 import { onMounted, ref } from "vue";
-import moment from "moment";
 import { $getPostList, $deletePost } from "../service/post";
+import moment from "moment";
+import Swal from "sweetalert2";
+
 export default {
   name: "PostList",
   setup() {
@@ -42,12 +44,21 @@ export default {
       postList.value = response.data.postList;
     };
     const formattedDate = (createdAt) => {
-      return moment(createdAt).format("YYYY-MM-DD");
+      return moment(createdAt).format("YYYY-MM-DD HH:MM");
     };
     const deletePost = async (id) => {
-      console.log(id);
-      await $deletePost(id);
-      load();
+      Swal.fire({
+        title: "제거하시겠습니까?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "blue",
+        cancelButtonColor: "red",
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          await $deletePost(id);
+          load();
+        }
+      });
     };
     onMounted(() => load());
     return {

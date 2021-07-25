@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="text-center mt-5">
     <img alt="Vue logo" src="../assets/logo.png" />
   </div>
 </template>
