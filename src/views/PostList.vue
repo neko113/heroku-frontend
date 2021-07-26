@@ -21,7 +21,7 @@
             </td>
             <td @click="test">{{ formattedDate(post.createdAt) }}</td>
             <td>
-              <router-link :to="{ name: 'PostDetail', params: { id: post.id } }"><i class="fas fa-pen" @click="load"></i></router-link>
+              <router-link :to="{ name: 'PostDetail', params: { id: post.id } }"><i class="fas fa-pen"></i></router-link>
             </td>
             <td><i class="fas fa-trash" type="button" @click="deletePost(post.id)"></i></td>
           </tr>

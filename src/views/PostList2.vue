@@ -2,13 +2,13 @@
   <div class="container-fluid p-5">
     <div class="row mt-5">
       <!-- TAG LIST -->
-      <div class="col-2">
+      <div class="col-md-2">
         <div>태그 목록</div>
         <hr />
       </div>
-      <div class="col-1"></div>
+      <div class="col-md-1"></div>
       <!-- POST LIST -->
-      <div class="col-6">
+      <div class="col-md-6">
         <div ref="scrollComponent">
           <div :key="i" v-for="(post, i) in postList">
             <div>
@@ -17,7 +17,7 @@
                   <strong>{{ post.title }}</strong>
                 </h2>
               </router-link>
-              <div>&nbsp;&nbsp;{{ post.content }}</div>
+              <div>&nbsp;&nbsp;{{ post.description }}</div>
               <div class="text-end">{{ formattedDate(post.createdAt) }}</div>
               <hr class="my-5" />
             </div>
@@ -57,7 +57,7 @@ export default {
 
     const handleScroll = () => {
       let element = scrollComponent.value;
-      if (element.getBoundingClientRect().bottom < window.innerHeight) {
+      if (element.getBoundingClientRect().bottom - 200 < window.innerHeight) {
         page.value += 1;
         load();
       }

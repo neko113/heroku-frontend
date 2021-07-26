@@ -1,18 +1,44 @@
 <template>
-  <div class="container mt-5">
-    <form>
-      <div class="row justify-content-center">
-        <div class="col-8">
-          <input v-model="title" type="text" class="form-control fs-3" placeholder="제목을 입력하세요" v-focus />
+  <div class="container-fluid">
+    <div class="row">
+      <!-- POST -->
+      <div class="col-md-6">
+        <div class="row">
+          <form>
+            <div class="mt-3">
+              <textarea v-model="title" placeholder="제목을 입력하세요" v-focus style="scroll: none height:10px"></textarea>
+            </div>
+            <div class="mt-3">
+              <textarea v-model="content" placeholder="내용을 입력하세요" style="height: 400px"></textarea>
+            </div>
+          </form>
         </div>
-        <div class="col-10 mt-5">
-          <textarea v-model="content" class="form-control fs-3" placeholder="내용을 입력하세요" style="height: 400px; resize:none"></textarea>
+        <div class="row">
+          <div id="fix-box" class="col-md-6 p-3 fixed-bottom">
+            <div class="row justify-content-between ">
+              <div class="col-4 text-start">
+                <router-link :to="{ name: 'PostList' }" class="btn btn-secondary"> <i class="fas fa-arrow-left"></i> 나가기</router-link>
+              </div>
+              <div class="col-4 text-end">
+                <div class="btn btn-secondary" @click="submit">제출하기</div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="col-3 btn btn-primary mt-5" @click="submit">제출하기</div>
       </div>
-    </form>
+      <!-- POST MIRROR -->
+      <div class="col-md-6 bg-light">
+        <div class="mt-3">
+          <textarea v-model="title" class="bg-light" readonly></textarea>
+        </div>
+        <div class="mt-3">
+          <textarea v-model="content" class="bg-light" style="height: 400px" readonly></textarea>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
+
 <script>
 import { ref } from "vue";
 import { useRouter } from "vue-router";
@@ -62,3 +88,15 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+textarea {
+  resize: none;
+  border: none;
+  outline: none;
+  width: 100%;
+}
+#fix-box {
+  box-shadow: rgba(0, 0, 0, 0.45) 0px -15px 15px -15px;
+}
+</style>
