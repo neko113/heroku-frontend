@@ -1,7 +1,7 @@
 import axios from "@/utils/axios";
 
-export function $getPostList() {
-  return axios.get(`/api/post`);
+export function $getPostList(query) {
+  return axios.get(`/api/post?${query}`);
 }
 
 export function $getPostDetail(id) {

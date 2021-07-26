@@ -17,6 +17,11 @@ const routes = [
     component: () => import("../views/PostList.vue"),
   },
   {
+    path: "/postList2",
+    name: "PostList2",
+    component: () => import("../views/PostList2.vue"),
+  },
+  {
     path: "/postForm",
     name: "PostForm",
     component: () => import("../views/PostForm.vue"),
@@ -25,6 +30,11 @@ const routes = [
     path: "/postDetail/:id",
     name: "PostDetail",
     component: () => import("../views/PostDetail.vue"),
+  },
+  {
+    path: "/test",
+    name: "Test",
+    component: () => import("../views/Test.vue"),
   },
   {
     // 404page

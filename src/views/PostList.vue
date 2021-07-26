@@ -1,6 +1,7 @@
 <template>
   <div class="text-center">
-    <router-link :to="{ name: 'PostForm' }" class="btn btn-outline-primary mt-5">작성하기</router-link>
+    <router-link :to="{ name: 'PostForm' }" class="btn btn-outline-primary mt-5 mx-3">작성하기</router-link>
+    <router-link :to="{ name: 'PostList2' }" class="btn btn-outline-primary mt-5">리스트 모드</router-link>
     <div class="mx-5 my-5">
       <table class="table table-hover align-middle text-center">
         <thead>
