@@ -1,8 +1,8 @@
 <template>
   <div class="container-fluid p-5">
     <div class="row mt-5">
-      <div class="col-md-3 bg-primary"></div>
-      <div class="col-md-6 bg-secondary">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
         <h1>
           <div>{{ postDetail.title }}</div>
         </h1>

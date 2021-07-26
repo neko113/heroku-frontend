@@ -4,9 +4,9 @@
       <!-- POST -->
       <div class="col-md-6">
         <div class="row">
-          <form>
+          <form class="p-5">
             <div class="mt-3">
-              <textarea v-model="title" placeholder="제목을 입력하세요" v-focus style="scroll: none height:10px"></textarea>
+              <h1><textarea class="title" v-model="title" placeholder="제목을 입력하세요" rows="1"></textarea></h1>
             </div>
             <div class="mt-3">
               <textarea v-model="content" placeholder="내용을 입력하세요" style="height: 400px"></textarea>
@@ -14,7 +14,7 @@
           </form>
         </div>
         <div class="row">
-          <div id="fix-box" class="col-md-6 p-3 fixed-bottom">
+          <div id="fix-box" class="col-md-6 p-3 fixed-bottom bg-light">
             <div class="row justify-content-between ">
               <div class="col-4 text-start">
                 <router-link :to="{ name: 'PostList' }" class="btn btn-secondary"> <i class="fas fa-arrow-left"></i> 나가기</router-link>
@@ -28,11 +28,13 @@
       </div>
       <!-- POST MIRROR -->
       <div class="col-md-6 bg-light">
-        <div class="mt-3">
-          <textarea v-model="title" class="bg-light" readonly></textarea>
-        </div>
-        <div class="mt-3">
-          <textarea v-model="content" class="bg-light" style="height: 400px" readonly></textarea>
+        <div class="p-5">
+          <div class="mt-3">
+            <h1><textarea v-model="title" class="bg-light" readonly></textarea></h1>
+          </div>
+          <div class="mt-3">
+            <textarea v-model="content" class="bg-light" style="height: 400px" readonly></textarea>
+          </div>
         </div>
       </div>
     </div>

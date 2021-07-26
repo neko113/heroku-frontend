@@ -25,6 +25,9 @@ const routes = [
     path: "/postForm",
     name: "PostForm",
     component: () => import("../views/PostForm.vue"),
+    meta: {
+      transitionName: "scale",
+    },
   },
   {
     path: "/postDetail/:id",

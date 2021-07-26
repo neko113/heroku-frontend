@@ -7,10 +7,8 @@
         <thead>
           <tr>
             <th width="20%">순서</th>
-            <th width="35%">제목</th>
-            <th width="35%">작성일</th>
-            <th width="5%"></th>
-            <th width="5%"></th>
+            <th width="40%">제목</th>
+            <th width="40%">작성일</th>
           </tr>
         </thead>
         <tbody>
@@ -20,10 +18,6 @@
               <router-link :to="{ name: 'PostDetail', params: { id: post.id } }">{{ post.title }}</router-link>
             </td>
             <td @click="test">{{ formattedDate(post.createdAt) }}</td>
-            <td>
-              <router-link :to="{ name: 'PostDetail', params: { id: post.id } }"><i class="fas fa-pen"></i></router-link>
-            </td>
-            <td><i class="fas fa-trash" type="button" @click="deletePost(post.id)"></i></td>
           </tr>
         </tbody>
       </table>
@@ -32,9 +26,8 @@
 </template>
 <script>
 import { onMounted, ref } from "vue";
-import { $getPostList, $deletePost } from "../service/post";
+import { $getPostList } from "../service/post";
 import moment from "moment";
-import Swal from "sweetalert2";
 
 export default {
   name: "PostList",
@@ -47,25 +40,10 @@ export default {
     const formattedDate = (createdAt) => {
       return moment(createdAt).format("YYYY-MM-DD HH:MM");
     };
-    const deletePost = async (id) => {
-      Swal.fire({
-        title: "제거하시겠습니까?",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "blue",
-        cancelButtonColor: "red",
-      }).then(async (result) => {
-        if (result.isConfirmed) {
-          await $deletePost(id);
-          load();
-        }
-      });
-    };
     onMounted(() => load());
     return {
       postList,
       formattedDate,
-      deletePost,
       load,
     };
   },
