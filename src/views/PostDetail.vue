@@ -31,6 +31,7 @@ export default {
     const load = async () => {
       const response = await $getPostDetail(id);
       postDetail.value = response.data.postDetail;
+      console.log(moment("2021-07-26T15:31:17.083Z"));
     };
     const formattedDate = (createdAt) => {
       return moment(createdAt).format("YYYY-MM-DD HH:MM");
