@@ -12,6 +12,22 @@ const routes = [
     component: () => import("../views/About.vue"),
   },
   {
+    path: "/login",
+    name: "Login",
+    component: () => import("../views/Login.vue"),
+    meta: {
+      transitionName: "scale",
+    },
+  },
+  {
+    path: "/register",
+    name: "Register",
+    component: () => import("../views/Register.vue"),
+    meta: {
+      transitionName: "scale",
+    },
+  },
+  {
     path: "/postList",
     name: "PostList",
     component: () => import("../views/PostList.vue"),
