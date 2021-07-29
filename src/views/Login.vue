@@ -27,9 +27,11 @@ import Swal from "sweetalert2";
 import { $login } from "../service/auth";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import { useStore } from "vuex";
 export default {
   setup() {
     const router = useRouter();
+    const store = useStore();
     const email = ref("");
     const password = ref("");
     const login = () => {
@@ -57,6 +59,7 @@ export default {
             timer: 800,
           });
         } else {
+          await store.dispatch("auth/getUser");
           Swal.fire({
             title: "로그인에 성공했습니다",
             icon: "success",

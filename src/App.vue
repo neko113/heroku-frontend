@@ -12,12 +12,15 @@
 <script>
 import TheNav from "@/components/layouts/TheNav";
 import { useRouter } from "vue-router";
-import { ref } from "vue";
+import { useStore } from "vuex";
+import { computed, onMounted, ref } from "vue";
 export default {
   components: { TheNav },
   setup() {
     const router = useRouter();
+    const store = useStore();
     const transitionName = ref("");
+    const user = computed(() => store.getters["auth/getUser"]);
     router.beforeEach((to, from, next) => {
       if (to.meta.transitionName) {
         transitionName.value = to.meta.transitionName;
@@ -26,8 +29,10 @@ export default {
       }
       next();
     });
+    onMounted(() => store.dispatch("auth/getUser"));
     return {
       transitionName,
+      user,
     };
   },
 };
